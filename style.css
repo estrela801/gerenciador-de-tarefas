@@ -24,6 +24,7 @@ body{
     margin: 0 auto;
 }
 .terminar,.adicionar,.finalizadas{
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -44,4 +45,8 @@ body{
 }
 .finalizadas{
     background-color: rgb(0, 233, 12);
+}
+.tasks-terminar,.tasks-finalizadas{
+    position: absolute;
+    right: 10px;
 }
