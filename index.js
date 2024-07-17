@@ -21,7 +21,8 @@ function add(){
     finalizadas.style.display='none'
     const divAdd = document.createElement('div')
     divAdd.classList.add('div-add')
-    const contanerGeral = document.querySelector('.container-geral')
-    el(divAdd,contanerGeral)
+    const paiTitulos = document.querySelector('.pai-titulos')
+    paiTitulos.classList.add('pai-titulos-add')
+    el(divAdd,paiTitulos)
 }
 btAdd.addEventListener('click', add)
