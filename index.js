@@ -1,11 +1,15 @@
 const btAdd = document.querySelector('.adicionar')
 const tasks = []
+
 function el(pai,container){
     const input = document.createElement('input')
     input.classList.add('input-add')
     input.setAttribute('type', 'text')
+
     const btAddTask = document.createElement('button')
+    btAddTask.classList.add('btAddTask')
     btAddTask.innerHTML='Adiconar Tarefa'
+
     pai.append(input, btAddTask)
     container.append(pai)
 }
