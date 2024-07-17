@@ -43,14 +43,27 @@ body{
 .adicionar{
     background-color: rgb(207, 204, 25);  
 }
-.adicionar-clicado{
-    position: absolute;
-    top:100px;
-}
+
 .finalizadas{
     background-color: rgb(0, 233, 12);
 }
 .tasks-terminar,.tasks-finalizadas{
     position: absolute;
     right: 10px;
+}
+
+
+/*  CONTAINER ADICIONAR */
+.pai-titulos-add{
+    display: flex;
+    flex-direction: column;
+}
+.adicionar-clicado{
+    position: absolute;
+    animation: addClick 180ms forwards linear ;
+}
+@keyframes addClick {
+    to{
+    transform: translateY(-100px);
+    }
 }
