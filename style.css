@@ -58,12 +58,21 @@ body{
     display: flex;
     flex-direction: column;
 }
-.adicionar-clicado{
-    position: absolute;
-    animation: addClick 180ms forwards linear ;
+.deslizarUp{
+    /* position: absolute; */
+    animation: Up 180ms forwards linear ;
 }
-@keyframes addClick {
+@keyframes Up {
     to{
     transform: translateY(-100px);
+    }
+}
+.deslizarDown{
+    /* position: absolute; */
+    animation: Down 180ms forwards linear;
+}
+@keyframes Down {
+    to{
+        transform:translateY(100px);
     }
 }
