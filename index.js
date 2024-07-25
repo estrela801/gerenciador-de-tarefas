@@ -37,7 +37,12 @@ function el(pai, container) {
         show();
     });
 }
-
+function verificaContainer(){
+    const teste = document.querySelector('.terminar-container')
+    if(teste){
+        teste.remove()
+    }
+}
 function add() {
     btAdd.style.display='none'
     const divAdd = document.createElement('div');
@@ -47,6 +52,9 @@ function add() {
     el(divAdd, paiTitulos);
     hideElement('.terminar');
     hideElement('.finalizadas');
+    verificaContainer()
+    const num = document.querySelector('.tasks-terminar')
+    num.innerHTML= tarefasRegistradas.length + 1
 }
 
 function hideElement(selector) {
@@ -100,6 +108,8 @@ btAdd.addEventListener('click', add);
 
 
 const terminar = document.querySelector('.terminar')
+
+
 function pegaTarefas(pai){
     tarefasRegistradas.forEach(task =>{
 
@@ -111,10 +121,11 @@ function pegaTarefas(pai){
     })
     return pai
 }
-
+let verificaParaOX = false
 function mostrarTarefas(){
-
-        const pai = document.body
+    
+    
+        const pai = document.querySelector('.container-geral')
         const teste = document.querySelector('.terminar-container')
         if(teste){
            teste.remove()
@@ -125,6 +136,44 @@ function mostrarTarefas(){
         const ret =  pegaTarefas(terminarContainer)
         pai.append(ret)   
     }
-}
 
+
+
+    function criaFechar(){
+        try{
+        const pai = document.querySelector('.terminar-container')
+        const div = document.createElement('div')
+        div.innerHTML='fechar'
+        div.classList.add('x')
+        const teste = document.querySelector('.x')
+
+        if(teste){
+            console.log('ja tem');
+        }else
+            pai.append(div)
+        }
+        catch(err){
+            console.error(err)
+        }
+        
+    }
+    criaFechar()
+    return verificaParaOX = false
+}
 terminar.addEventListener('click', mostrarTarefas)
+
+//LÓGICA DO X DE APAGAR O CONTAINER
+
+// if(verificaParaOX){
+   
+// }else{
+
+//      console.log('aaadasd');
+//     const container = document.querySelector('.terminar-container')
+//     const X = document.querySelector('.img-x')
+//     X.addEventListener('click', ()=>{
+//     container.remove()
+// })
+//     console.log('teste');
+// }
+
