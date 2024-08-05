@@ -133,13 +133,12 @@ body{
     cursor: pointer;
 }
 
-.img-confirm{
+.img-confirm, .img-lixeira{
     width: 18px;
     height: 18px;
     margin-left: 15px;
     cursor: pointer;
 }
-
 .h2{
     color: white;
     position: absolute;
