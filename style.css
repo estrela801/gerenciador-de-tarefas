@@ -93,6 +93,7 @@ body{
 
 
 .container{
+    position: relative;
     border: 5px solid black; 
     min-height: 200px;
     display: flex;
@@ -137,4 +138,10 @@ body{
     height: 18px;
     margin-left: 15px;
     cursor: pointer;
+}
+
+.h2{
+    color: white;
+    position: absolute;
+    top: -70px;
 }
