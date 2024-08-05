@@ -2,6 +2,8 @@
 const btAdd = document.querySelector('.adicionar');
 const tarefasRegistradas = [];
 const tarefasFinalizadas =[]
+const finalizadas = document.querySelector('.finalizadas')
+const terminar = document.querySelector('.terminar')
 
 function createInputElement() {
     const input = document.createElement('input');
@@ -106,11 +108,6 @@ btAdd.addEventListener('click', add);
 // Lógica de pegar a tarefa digitada e adicionar em um elemento nas tarefas
 
 
-
-
-const terminar = document.querySelector('.terminar')
-
-
 function pegaTarefas(pai){
     tarefasRegistradas.forEach(task =>{
 
@@ -125,10 +122,13 @@ function pegaTarefas(pai){
         el.append(img)
         pai.append(el)
     })
+   
     return pai
 }
 
 let verificaParaOX = false
+
+
 function mostrarTarefas(){
     
     
@@ -140,10 +140,27 @@ function mostrarTarefas(){
          else{
             const terminarContainer = document.createElement('div')
             terminarContainer.classList.add('terminar-container')
+            terminarContainer.classList.add('container')
             const ret =  pegaTarefas(terminarContainer)
             pai.append(ret)   
         }
         criaFechar()
+
+        
+        const imgs =  document.querySelectorAll('.img-confirm')
+        imgs.forEach(img=>{
+            
+            img.addEventListener('click', ()=>{
+                console.log('terefa adicionada');
+                console.log(tarefasFinalizadas);
+                const irmao = img.previousElementSibling
+                const valueIrmao = irmao.innerHTML
+                console.log(valueIrmao);
+                tarefasFinalizadas.push(valueIrmao)
+                
+            })
+        })
+   
 }
 
 
@@ -169,20 +186,39 @@ function apagaPai(el,pai){
 }
 
 
-function finalizarTarefa(el){
-   const imgs =  document.querySelectorAll('.img-confirm')
-   imgs.forEach(img=>{
-    img.addEventListener('click', ()=>{
-        tarefasFinalizadas.push(el)
+function pegarTarefasFinalizadas(pai){
+    tarefasFinalizadas.forEach(task =>{
+
+        const el = document.createElement('div')
+        el.classList.add('tarefa-lista')
+        el.innerHTML= `Tarefa Finalizada : <span class='span-tarefa'>${task}</span>`
+        console.log('aqui foi');
+        
+        console.log(`Pegou a tarefa ${task}`);
+        
+        pai.append(el)
+        
     })
-   })
+    return pai
+}
+function exibirTarefasFinalizadas(){
+
+        console.log('teste apareceu');
+    
+        const pai = document.createElement('div')
+        pai.classList.add('container')
+        pai.classList.add('finalizadas-container')
+       
+        const retorno = pegarTarefasFinalizadas(pai)
+        const containerGeral = document.querySelector('.container-geral')
+        containerGeral.append(retorno)
+        console.log(tarefasFinalizadas);
+            
+       
+
 }
 
 
-
-
-
-
 terminar.addEventListener('click', mostrarTarefas)
-
+finalizadas.addEventListener('click', exibirTarefasFinalizadas)
 
