@@ -42,9 +42,9 @@ function el(pai, container) {
 }
 function verificaContainer(){
     const teste = document.querySelector('.terminar-container')
-    if(teste){
-        teste.remove()
-    }
+    const teste2 = document.querySelector('.finalizadas-container')
+    if(teste)teste.remove()
+    if(teste2)teste2.remove()
 }
 function add() {
     btAdd.style.display='none'
@@ -55,9 +55,9 @@ function add() {
     el(divAdd, paiTitulos);
     hideElement('.terminar');
     hideElement('.finalizadas');
-    verificaContainer()
     const num = document.querySelector('.tasks-terminar')
     num.innerHTML= tarefasRegistradas.length + 1
+    verificaContainer()
 }
 
 function hideElement(selector) {
@@ -115,6 +115,7 @@ function pegaTarefas(pai){
         el.classList.add('tarefa-lista')
         el.innerHTML= `Tarefa : <span class='span-tarefa'>${task}</span>`
 
+      
         
         const img = document.createElement('img')
         img.classList.add('img-confirm')
@@ -130,21 +131,26 @@ let verificaParaOX = false
 
 
 function mostrarTarefas(){
-    
+
+      const testeDeContainer =   document.querySelector('.finalizadas-container')
+      if(testeDeContainer){
+        testeDeContainer.remove()    
+    } 
     
         const pai = document.querySelector('.container-geral')
         const teste = document.querySelector('.terminar-container')
         if(teste){
-           teste.remove()
+            teste.remove()
         }
-         else{
+        else{
             const terminarContainer = document.createElement('div')
             terminarContainer.classList.add('terminar-container')
+            criaFechar(terminarContainer)
+            adicinonaTitulo(terminarContainer, 'Tarefas a Finalizar')
             terminarContainer.classList.add('container')
             const ret =  pegaTarefas(terminarContainer)
             pai.append(ret)   
         }
-        criaFechar()
 
         
         const imgs =  document.querySelectorAll('.img-confirm')
@@ -164,13 +170,17 @@ function mostrarTarefas(){
 }
 
 
- function criaFechar(){
-            const pai = document.querySelector('.terminar-container')
+ function criaFechar(pai){
+        
             const div = document.createElement('div')
             div.classList.add('x')
             div.innerHTML='fechar'
             
-            if(div){
+            if(el){
+                console.log(pai);
+                
+                console.log(div);
+                
                pai.append(div)
             }else{
                 console.log('Div retirada');
@@ -184,7 +194,13 @@ function apagaPai(el,pai){
         pai.remove()
     })
 }
+function adicinonaTitulo(pai, text){
+    const h2 = document.createElement('h2')
+    h2.innerHTML=text
+    h2.classList.add('h2')
+    pai.append(h2)
 
+}
 
 function pegarTarefasFinalizadas(pai){
     tarefasFinalizadas.forEach(task =>{
@@ -203,16 +219,28 @@ function pegarTarefasFinalizadas(pai){
 }
 function exibirTarefasFinalizadas(){
 
-        console.log('teste apareceu');
-    
+        const testeDeContainer = document.querySelector('.terminar-container')
+        if(testeDeContainer) testeDeContainer.remove()
+
         const pai = document.createElement('div')
         pai.classList.add('container')
         pai.classList.add('finalizadas-container')
-       
-        const retorno = pegarTarefasFinalizadas(pai)
+        adicinonaTitulo(pai, 'Tarefas Finalizadas')
+
         const containerGeral = document.querySelector('.container-geral')
-        containerGeral.append(retorno)
-        console.log(tarefasFinalizadas);
+        const teste = containerGeral.querySelector('.finalizadas-container')
+
+        if(teste){
+            teste.remove()
+        }else{
+            const retorno = pegarTarefasFinalizadas(pai)
+            containerGeral.append(retorno)
+            // console.log(tarefasFinalizadas);
+        }
+        
+        
+        criaFechar(pai)
+
             
        
 
