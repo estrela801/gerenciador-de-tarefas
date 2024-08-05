@@ -121,6 +121,7 @@ function pegaTarefas(pai){
     })
     return pai
 }
+
 let verificaParaOX = false
 function mostrarTarefas(){
     
@@ -131,49 +132,35 @@ function mostrarTarefas(){
            teste.remove()
         }
          else{
-        const terminarContainer = document.createElement('div')
-        terminarContainer.classList.add('terminar-container')
-        const ret =  pegaTarefas(terminarContainer)
-        pai.append(ret)   
+            const terminarContainer = document.createElement('div')
+            terminarContainer.classList.add('terminar-container')
+            const ret =  pegaTarefas(terminarContainer)
+            pai.append(ret)   
+        }
+        criaFechar()
+}
+
+
+ function criaFechar(){
+            const pai = document.querySelector('.terminar-container')
+            const div = document.createElement('div')
+            div.classList.add('x')
+            div.innerHTML='fechar'
+            
+            if(div){
+               pai.append(div)
+            }else{
+                console.log('Div retirada');
+            }
+            apagaPai(div,pai)
+       
     }
 
-
-
-    function criaFechar(){
-        try{
-        const pai = document.querySelector('.terminar-container')
-        const div = document.createElement('div')
-        div.innerHTML='fechar'
-        div.classList.add('x')
-        const teste = document.querySelector('.x')
-
-        if(teste){
-            console.log('ja tem');
-        }else
-            pai.append(div)
-        }
-        catch(err){
-            console.error(err)
-        }
-        
-    }
-    criaFechar()
-    return verificaParaOX = false
+function apagaPai(el,pai){
+    el.addEventListener('click',()=>{
+        pai.remove()
+    })
 }
 terminar.addEventListener('click', mostrarTarefas)
 
-//LÓGICA DO X DE APAGAR O CONTAINER
-
-// if(verificaParaOX){
-   
-// }else{
-
-//      console.log('aaadasd');
-//     const container = document.querySelector('.terminar-container')
-//     const X = document.querySelector('.img-x')
-//     X.addEventListener('click', ()=>{
-//     container.remove()
-// })
-//     console.log('teste');
-// }
 
