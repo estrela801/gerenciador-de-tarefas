@@ -91,18 +91,23 @@ body{
     margin-left: 10px;
 }
 
+
+.container{
+    border: 5px solid black; 
+    min-height: 200px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    border-radius: 4px;
+    width: 800px;   
+    margin-bottom:50px;
+}
+
 /* Estilização das tarefas no container tarefas */
 
 .terminar-container{
     position: relative;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    border: 5px solid black;
-    border-radius: 4px;
-    width: 800px;
-    min-height: 200px;
-    margin-bottom:50px;
+    
 }
 .tarefa-lista{
     color: white;
