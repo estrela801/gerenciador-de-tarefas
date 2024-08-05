@@ -1,6 +1,7 @@
 // LÓGICA DO BOTÃO ADICIONAR
 const btAdd = document.querySelector('.adicionar');
 const tarefasRegistradas = [];
+const tarefasFinalizadas =[]
 
 function createInputElement() {
     const input = document.createElement('input');
@@ -117,6 +118,11 @@ function pegaTarefas(pai){
         el.classList.add('tarefa-lista')
         el.innerHTML= `Tarefa : <span class='span-tarefa'>${task}</span>`
 
+        
+        const img = document.createElement('img')
+        img.classList.add('img-confirm')
+        img.src='imagens/icons8-check-mark-50.png'
+        el.append(img)
         pai.append(el)
     })
     return pai
@@ -161,6 +167,22 @@ function apagaPai(el,pai){
         pai.remove()
     })
 }
+
+
+function finalizarTarefa(el){
+   const imgs =  document.querySelectorAll('.img-confirm')
+   imgs.forEach(img=>{
+    img.addEventListener('click', ()=>{
+        tarefasFinalizadas.push(el)
+    })
+   })
+}
+
+
+
+
+
+
 terminar.addEventListener('click', mostrarTarefas)
 
 
