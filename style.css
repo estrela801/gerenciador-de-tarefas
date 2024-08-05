@@ -113,6 +113,8 @@ body{
     border-radius: 3px;
     border: 2px solid;
     height: 20px;
+    display: flex;
+    align-items: center;
 }
 .span-tarefa{
     font-weight: 100;
@@ -122,5 +124,12 @@ body{
     left: 0;
     color: white;
     height: 30px;
+    cursor: pointer;
+}
+
+.img-confirm{
+    width: 18px;
+    height: 18px;
+    margin-left: 15px;
     cursor: pointer;
 }
