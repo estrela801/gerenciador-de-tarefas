@@ -5,6 +5,12 @@ const tarefasFinalizadas =[]
 const finalizadas = document.querySelector('.finalizadas')
 const terminar = document.querySelector('.terminar')
 
+
+
+
+function verificaContainer(el){
+    if(el)el.remove()
+}
 function createInputElement() {
     const input = document.createElement('input');
     input.classList.add('input-add');
@@ -40,12 +46,7 @@ function el(pai, container) {
         show();
     });
 }
-function verificaContainer(){
-    const teste = document.querySelector('.terminar-container')
-    const teste2 = document.querySelector('.finalizadas-container')
-    if(teste)teste.remove()
-    if(teste2)teste2.remove()
-}
+
 function add() {
     btAdd.style.display='none'
     const divAdd = document.createElement('div');
@@ -55,9 +56,13 @@ function add() {
     el(divAdd, paiTitulos);
     hideElement('.terminar');
     hideElement('.finalizadas');
-    const num = document.querySelector('.tasks-terminar')
-    num.innerHTML= tarefasRegistradas.length + 1
-    verificaContainer()
+    verificaContainer(document.querySelector('.container'))
+
+    const tasksFazer = document.querySelector('.tasks-terminar')
+    tasksFazer.innerHTML= tarefasRegistradas.length + 1
+
+    
+    
 }
 
 function hideElement(selector) {
@@ -157,12 +162,19 @@ function mostrarTarefas(){
         imgs.forEach(img=>{
             
             img.addEventListener('click', ()=>{
-                console.log('terefa adicionada');
                 console.log(tarefasFinalizadas);
                 const irmao = img.previousElementSibling
                 const valueIrmao = irmao.innerHTML
                 console.log(valueIrmao);
                 tarefasFinalizadas.push(valueIrmao)
+                tarefasRegistradas.pop(valueIrmao)
+                img.parentElement.remove()
+
+                const tasksTerminar = document.querySelector('.tasks-finalizadas')
+                tasksTerminar.innerHTML = tarefasFinalizadas.length
+
+                const tasksFazer = document.querySelector('.tasks-terminar')
+                tasksFazer.innerHTML= tarefasRegistradas.length 
                 
             })
         })
@@ -174,17 +186,9 @@ function mostrarTarefas(){
         
             const div = document.createElement('div')
             div.classList.add('x')
-            div.innerHTML='fechar'
-            
-            if(el){
-                console.log(pai);
-                
-                console.log(div);
-                
-               pai.append(div)
-            }else{
-                console.log('Div retirada');
-            }
+            div.innerHTML='fechar'    
+            if(el)pai.append(div)               
+            else console.log('Div retirada');          
             apagaPai(div,pai)
        
     }
@@ -207,7 +211,7 @@ function pegarTarefasFinalizadas(pai){
 
         const el = document.createElement('div')
         el.classList.add('tarefa-lista')
-        el.innerHTML= `Tarefa Finalizada : <span class='span-tarefa'>${task}</span>`
+        el.innerHTML= `Tarefa Finalizada : <span class='span-tarefa'>${task}</span> <img class='img-lixeira' src="imagens/icons8-lixeira-30.png" alt="">`
         console.log('aqui foi');
         
         console.log(`Pegou a tarefa ${task}`);
@@ -241,7 +245,19 @@ function exibirTarefasFinalizadas(){
         
         criaFechar(pai)
 
+        const lixeiras = document.querySelectorAll('.img-lixeira')
+        lixeiras.forEach(lixeira=>{
+            lixeira.addEventListener('click',()=>{
+                lixeira.parentElement.remove()
+                const valueIrmao = lixeira.previousElementSibling.value
+                tarefasFinalizadas.pop(valueIrmao)
+
+                const tasksTerminar = document.querySelector('.tasks-finalizadas')
+                tasksTerminar.innerHTML = tarefasFinalizadas.length
+
+            })
             
+        })
        
 
 }
