@@ -120,13 +120,7 @@ body{
 .x{
     position: absolute;
     left: 0;
-    width: 30px;
+    color: white;
     height: 30px;
-
-}
-.img-x{
-    width: 30px;
-    height: 30px;
-    object-fit: contain;
     cursor: pointer;
 }
