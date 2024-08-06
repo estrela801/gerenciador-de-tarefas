@@ -47,19 +47,28 @@ function el(pai, container) {
     });
 }
 
-function add() {
-    btAdd.style.display='none'
-    const divAdd = document.createElement('div');
-    divAdd.classList.add('div-add');
-    const paiTitulos = document.querySelector('.pai-titulos');
-    paiTitulos.classList.add('pai-titulos-add');
-    el(divAdd, paiTitulos);
-    hideElement('.terminar');
-    hideElement('.finalizadas');
-    verificaContainer(document.querySelector('.container'))
 
-    const tasksFazer = document.querySelector('.tasks-terminar')
-    tasksFazer.innerHTML= tarefasRegistradas.length + 1
+function add() {
+
+    const teste = document.querySelector('.div-add')
+    if(!teste){
+         btAdd.style.display='none'
+        const divAdd = document.createElement('div');
+        divAdd.classList.add('div-add');
+        const paiTitulos = document.querySelector('.pai-titulos');
+        paiTitulos.classList.add('pai-titulos-add');
+        el(divAdd, paiTitulos);
+        hideElement('.terminar');
+        hideElement('.finalizadas');
+        verificaContainer(document.querySelector('.container'))
+
+        const tasksFazer = document.querySelector('.tasks-terminar')
+        tasksFazer.innerHTML= tarefasRegistradas.length + 1
+    }else{
+        teste.remove()
+    }
+
+   
 
     
     
@@ -108,6 +117,12 @@ function show() {
 
 btAdd.addEventListener('click', add);
 
+document.addEventListener('keydown', event=>{
+    if(event.key === 'Enter'){
+        event.preventDefault()
+        add()
+    }
+})
 
 
 // Lógica de pegar a tarefa digitada e adicionar em um elemento nas tarefas
