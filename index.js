@@ -11,6 +11,7 @@ const terminar = document.querySelector('.terminar')
 function verificaContainer(el){
     if(el)el.remove()
 }
+
 function createInputElement() {
     const input = document.createElement('input');
     input.classList.add('input-add');
@@ -36,6 +37,21 @@ function el(pai, container) {
     
     appendElementsToContainer(pai, [input, btAddTask]);
     container.appendChild(pai);
+    
+    
+    document.addEventListener('keydown', event=>{
+    if(event.key === 'Enter'){
+            event.preventDefault()
+            enviarTask(input.value)
+
+            add()
+            setTimeout(() => {
+                ['.finalizadas', '.terminar', '.adicionar'].forEach(selector => {
+                    showElement(selector);
+                });
+            }, 800);
+        }
+    })
 
     // Adiciona o evento de clique ao botão de adicionar tarefa
     btAddTask.addEventListener('click', () => {
@@ -45,33 +61,6 @@ function el(pai, container) {
         input.style.display = 'none'; // Oculta o input após o clique
         show();
     });
-}
-
-
-function add() {
-
-    const teste = document.querySelector('.div-add')
-    if(!teste){
-         btAdd.style.display='none'
-        const divAdd = document.createElement('div');
-        divAdd.classList.add('div-add');
-        const paiTitulos = document.querySelector('.pai-titulos');
-        paiTitulos.classList.add('pai-titulos-add');
-        el(divAdd, paiTitulos);
-        hideElement('.terminar');
-        hideElement('.finalizadas');
-        verificaContainer(document.querySelector('.container'))
-
-        const tasksFazer = document.querySelector('.tasks-terminar')
-        tasksFazer.innerHTML= tarefasRegistradas.length + 1
-    }else{
-        teste.remove()
-    }
-
-   
-
-    
-    
 }
 
 function hideElement(selector) {
@@ -115,14 +104,31 @@ function show() {
     }, 800);
 }
 
+function add() {
+
+    const teste = document.querySelector('.div-add')
+    if(!teste){
+         btAdd.style.display='none'
+        const divAdd = document.createElement('div');
+        divAdd.classList.add('div-add');
+        const paiTitulos = document.querySelector('.pai-titulos');
+        paiTitulos.classList.add('pai-titulos-add');
+        el(divAdd, paiTitulos);
+        hideElement('.terminar');
+        hideElement('.finalizadas');
+        verificaContainer(document.querySelector('.container'))
+
+        const tasksFazer = document.querySelector('.tasks-terminar')
+        tasksFazer.innerHTML= tarefasRegistradas.length + 1
+    }else{
+        teste.remove()
+    }
+    
+}
+
 btAdd.addEventListener('click', add);
 
-document.addEventListener('keydown', event=>{
-    if(event.key === 'Enter'){
-        event.preventDefault()
-        add()
-    }
-})
+
 
 
 // Lógica de pegar a tarefa digitada e adicionar em um elemento nas tarefas
