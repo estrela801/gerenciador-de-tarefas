@@ -29,3 +29,4 @@ connection.query('SELECT * from usuarios', (err, results, fields) => {
 
 // Fechar a conexão
 connection.end();
+

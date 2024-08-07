@@ -1,1 +1,17 @@
-node_modules
+# Ignorar o diretório node_modules
+node_modules/
+
+# Ignorar o diretório conexaoMysql
+conexaoMysql.js
+
+# Se conexaoMysql for um arquivo, adicione:
+# conexaoMysql.js
+
+# Outros arquivos e diretórios comuns a ignorar
+*.log
+*.tmp
+dist/
+build/
+.vscode/
+.idea/
+.env
