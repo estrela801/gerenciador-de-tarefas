@@ -3,6 +3,7 @@ node_modules/
 
 # Ignorar o diretório conexaoMysql
 conexaoMysql.js
+Api.js
 
 # Se conexaoMysql for um arquivo, adicione:
 # conexaoMysql.js
