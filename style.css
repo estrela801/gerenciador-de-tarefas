@@ -1,146 +1,57 @@
 body{
-    min-height: 98vh;
-    min-width: 98vw;
-    background-color: #166d5c;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: rgb(0, 0, 0);
 }
-.container-geral{
-   width: 100%;
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-
+:root{
+    --general-color: black;
+    --option-font-size: 30px;
+    --option-font-family: Calibri;
+    --title-tasks-font-size: 28px;
+    --title-tasks-font-family: Verdana;
 }
-.titulo-pagina{
-    font-size: 35px;
-    color: white;
-    text-transform: uppercase;
-}
-.pai-titulos{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 300px;
-    margin: 0 auto;
-}
-.terminar,.adicionar,.finalizadas{
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 10px;
-    font-size: x-large;
-    text-transform: uppercase;
-    color: rgb(255, 242, 242);
-    width: 300px;
-    height: 40px;
-    border-radius:6px;
-    cursor: pointer;
-}
-.terminar{
-    background-color: rgb(0, 162, 255);
-}
-.adicionar{
-    background-color: rgb(207, 204, 25);  
-}
-
-.finalizadas{
-    background-color: rgb(0, 233, 12);
-}
-.tasks-terminar,.tasks-finalizadas{
+header{
     position: absolute;
-    right: 10px;
+    top: 0;
+    width: 100vw;
+    /* background-color: black; */
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+
 }
+header .nav-options .all-options{
+    display: flex;
+}
+header .nav-options .all-options a{
+    text-decoration: none;
+    color: var(--general-color);
 
-
-/*  CONTAINER ADICIONAR */
-.pai-titulos-add{
+}
+header .nav-options .all-options .option{
+    margin: 0 20px;
+    list-style: none;
+    font-size: var(--option-font-size);
+    font-family: var(--option-font-family);
+    border-bottom: 2px  groove rgb(0, 0, 0);
+    transition: 200ms;
+}
+header .nav-options .all-options .option:hover{
+    font-size: 34px;
+}
+.container{
     display: flex;
     flex-direction: column;
-}
-.deslizarUp{
-    /* position: absolute; */
-    animation: Up 180ms forwards linear ;
-}
-@keyframes Up {
-    to{
-    transform: translateY(-100px);
-    }
-}
-.deslizarDown{
-    /* position: absolute; */
-    animation: Down 180ms forwards linear;
-}
-@keyframes Down {
-    to{
-        transform:translateY(120deg);
-    }
-}
-
-.input-add{
-    width: 300px;
-    height: 30px;
-    padding-left:10px;
-    border-radius: 6px;
-}
-.btAddTask{
-    background-color: grey;
-    width: 200px;
-    height: 30px;
-    border-radius: 2px;
-    margin-left: 10px;
-}
-
-
-.container{
-    position: relative;
-    border: 5px solid black; 
-    min-height: 200px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    border-radius: 4px;
-    width: 800px;   
-    margin-bottom:50px;
-}
-
-/* Estilização das tarefas no container tarefas */
-
-.terminar-container{
-    position: relative;
-    
-}
-.tarefa-lista{
-    color: white;
-    margin: 10px;
-    font-size: 20px;
-    background-color: rgb(0, 118, 187);
-    padding: 8px;
-    border-radius: 3px;
-    border: 2px solid;
-    height: 20px;
-    display: flex;
     align-items: center;
 }
-.span-tarefa{
-    font-weight: 100;
+.center{
+    margin-top: 80px;
 }
-.x{
-    position: absolute;
-    left: 0;
-    color: white;
-    height: 30px;
-    cursor: pointer;
+.center h1{
+    font-size: var(--title-tasks-font-size);
+    font-family: var(--title-tasks-font-family);
 }
+.card-task{
 
-.img-confirm, .img-lixeira{
-    width: 18px;
-    height: 18px;
-    margin-left: 15px;
-    cursor: pointer;
-}
-.h2{
-    color: white;
-    position: absolute;
-    top: -70px;
 }

@@ -7,14 +7,31 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <section class="container-geral">
-        <h1 class="titulo-pagina">tarefas</h1>
-        <div class="pai-titulos">
-            <div class="terminar">tarefas <span class="tasks-terminar"></span></div>
-            <button class="adicionar">adicionar</button>
-            <div class="finalizadas">finalizadas <span class="tasks-finalizadas"></span></div>
-        </div>
-
+    <header>
+        <nav class="nav-options">
+            <ul class="all-options">
+                <a href="">
+                    <li class="option">Add task</li>
+                </a>
+                <a href="">
+                    <li class="option">Edit your task</li>
+                </a>
+                <a href="">
+                    <li class="option">Finished tasks</li>
+                </a>
+            </ul>    
+        </nav>
+    </header>
+  
+    <section class="container"> 
+         
+    <div class="center">
+        <h1>Actually tasks</h1> 
+    </div>
+    <div class="card-task">
+        <h2>title: <span class="titulo">test</span></h2>
+        <p>content: <span class="conteudo"></span></p>
+    </div>
     </section>
     <script src="index.js"></script>
     <script src="Api.js"></script>
