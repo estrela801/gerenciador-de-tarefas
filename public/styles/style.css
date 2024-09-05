@@ -1,0 +1,86 @@
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: rgb(0, 0, 0);
+}
+:root{
+    --general-color: black;
+    --option-font-size: 30px;
+    --option-font-family: Calibri;
+    --title-tasks-font-size: 28px;
+    --title-tasks-font-family: Verdana;
+    --control-font-size: 27px;
+    --control-font-family: sans-serif ;
+    --control-font-weight: 800 ;
+    --content-font-family: Calibri,'Trebuchet MS';
+    --content-font-size: 18px;
+    --content-font-weight: 500;
+}
+header{
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    /* background-color: black; */
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    
+
+}
+header .nav-options .all-options{
+    display: flex;
+}
+header .nav-options .all-options a{
+    text-decoration: none;
+    color: var(--general-color);
+
+}
+header .nav-options .all-options .option{
+    margin: 0 20px;
+    list-style: none;
+    font-size: var(--option-font-size);
+    font-family: var(--option-font-family);
+    border-bottom: 2px  groove rgb(0, 0, 0);
+    transition: 200ms;
+}
+header .nav-options .all-options .option:hover{
+    font-size: 34px;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.center{
+    margin-top: 80px;
+}
+.center h1{
+    font-size: var(--title-tasks-font-size);
+    font-family: var(--title-tasks-font-family);
+}
+.cards{
+    border-top: 2px solid black;
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin:  auto 0;
+}
+.card-task{
+    border: 1px solid black;
+    padding: 5px;
+    border-radius: 2px;
+    width: 250px;
+    max-width: 300px;
+    margin: 20px;
+}
+.card-task .control{
+    font-family: var(--control-font-family);
+    font-size: var(--control-font-size);
+    font-weight: var(--control-font-weight);
+}
+.card-task .content{
+    font-family:  var(--content-font-family);
+    font-size: var(--content-font-size);
+    font-weight: var(--content-font-weight);
+}
