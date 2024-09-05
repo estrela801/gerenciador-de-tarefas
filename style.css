@@ -10,6 +10,12 @@ body{
     --option-font-family: Calibri;
     --title-tasks-font-size: 28px;
     --title-tasks-font-family: Verdana;
+    --control-font-size: 27px;
+    --control-font-family: sans-serif ;
+    --control-font-weight: 800 ;
+    --content-font-family: Calibri,'Trebuchet MS';
+    --content-font-size: 18px;
+    --content-font-weight: 500;
 }
 header{
     position: absolute;
@@ -19,6 +25,7 @@ header{
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
+    
 
 }
 header .nav-options .all-options{
@@ -52,6 +59,28 @@ header .nav-options .all-options .option:hover{
     font-size: var(--title-tasks-font-size);
     font-family: var(--title-tasks-font-family);
 }
+.cards{
+    border-top: 2px solid black;
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin:  auto 0;
+}
 .card-task{
-
+    border: 1px solid black;
+    padding: 5px;
+    border-radius: 2px;
+    width: 250px;
+    max-width: 300px;
+    margin: 20px;
+}
+.card-task .control{
+    font-family: var(--control-font-family);
+    font-size: var(--control-font-size);
+    font-weight: var(--control-font-weight);
+}
+.card-task .content{
+    font-family:  var(--content-font-family);
+    font-size: var(--content-font-size);
+    font-weight: var(--content-font-weight);
 }
