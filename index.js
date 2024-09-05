@@ -1,3 +1,2 @@
-const conteudo = document.querySelector('.conteudo')
-        
-conteudo.innerHTML='. Corporis dignissimos iste amet?'
+"use strict";
+const express = require('express');
