@@ -1,15 +1,58 @@
-const express= require('express')
-const app = express()
-const path = require('path')
-app.use(express.static(path.join(__dirname, 'public')))
-function Root(page: any){
-    return path.join(__dirname, `public/${page}`)
+import express, { Request, Response } from 'express';
+import mongoose from 'mongoose';
+import path from 'path';
+import Tarefa from './models/Tarefas'
+// Inicialização do Express e conexão com MongoDB
+const app = express();
+
+mongoose.connect('mongodb://localhost:27017/gerenciador', {
+  
+})
+.then(() => {
+  console.log('Banco conectado');
+})
+.catch((err) => {
+  console.error('Erro ao conectar ao banco:', err);
+});
+
+// Servir arquivos estáticos
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Função para construir caminhos para os arquivos
+function Root(page: string) {
+  return path.join(__dirname, `public/${page}`);
 }
 
-app.get('/', (req: any,res: any)=>{
-    res.sendFile(Root('index.html'))
-})
+// Definir um modelo Mongoose para Tarefa (ajuste conforme necessário)
 
+// Rota principal
+app.get('/', async (req: Request, res: Response) => {
+  try {
+    const tarefas = await Tarefa.find().exec();
+    res.send(`
+      
+        ${tarefas.map(tarefa => `
+          <div>
+            <h2>${tarefa.titulo}</h2>
+            <p>${tarefa.conteudo}</p>
+            <a href="#">${tarefa.slug}</a>
+          </div>
+        `).join('')}
+      </body>
+      </html>
+    `);
+  } catch (err) {
+    res.status(500).send('Erro ao buscar tarefas');
+  }
+});
 
-const PORT = process.env.PORT || 3000
-app.listen(PORT)
+// Rota para adicionar novas tarefas (a ser implementada)
+app.get('/add', (req: Request, res: Response) => {
+  res.send('Adicionar tarefa');
+});
+
+// Iniciar o servidor
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
