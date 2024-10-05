@@ -4,8 +4,7 @@
   "description": "Neste repositório criarei um gerenciador de tarefas usando HTML, CSS e JavaScript. Para isso tentarei implementar o uso de um banco de dados.",
   "main": "index.js",
   "scripts": {
-    "start": "ts-node index.ts",
-    "test": ""
+    "start": "ts-node index.ts"
   },
   "keywords": [],
   "author": "",

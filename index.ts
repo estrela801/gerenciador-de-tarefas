@@ -2,6 +2,8 @@ import express, { Request, Response } from 'express';
 import mongoose from 'mongoose';
 import path from 'path';
 import Tarefa from './models/Tarefas'
+import Tarefas from './models/Tarefas';
+import { log } from 'console';
 // Inicialização do Express e conexão com MongoDB
 const app = express();
 
@@ -48,8 +50,20 @@ app.get('/', async (req: Request, res: Response) => {
 
 // Rota para adicionar novas tarefas (a ser implementada)
 app.get('/add', (req: Request, res: Response) => {
-  res.send('Adicionar tarefa');
+  Root('add.html')
 });
+app.post('/add', (req:Request, res:Response)=>{
+  try{
+    Tarefas.findOne({_id: req.params.id}).then((tarefa)=>{{
+
+    }})
+
+  }
+  catch(err){
+    console.log(err);
+    
+  }
+})
 
 // Iniciar o servidor
 const PORT = process.env.PORT || 3000;
